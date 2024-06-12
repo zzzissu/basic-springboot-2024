@@ -14,7 +14,10 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - Tomcat Webserver가 내장(따로 설치 필요X)
     - 서포트 기능 다수 존재(개발을 쉽게 도와줌)
     - JUnit 테스트, Log4J2 로그도 모두 포함
-    - JSP, Thymeleaf, 편하게 사용가능
+    - JSP, **Thymeleaf**, Mustache 등.. 편하게 사용가능
+    - DB 연동이 무지 쉽다
+  - MVC
+    <img src="https://raw.githubusercontent.com/zzzissu/basic-springboot-2024/main/images/sp002.png" width="730">
 
 - Spring Boot 개발환경 설정
 
@@ -85,11 +88,30 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
       - 터미널에서 .\gradlew.bat 실행
       - Gradle for java(코끼리 아이콘) > Tasks > Build > Build play icon(Run task) 실행
     - spring Boot Dashboard
+
       - Apps > Spring-1 Run | Debug 중에서 하나 아이콘 클릭 서버 실행
       - 디버그로 실행해야 Hot code replace가 동작!!
+
+        <img src="https://raw.githubusercontent.com/zzzissu/basic-springboot-2024/main/images/sp001.png" width="350>
+
     - 브라우저 변경설정
       - 설정(Ctrl + ,) > browser > Spring > Dashboard Open With 'Internal' -> 'external'로 변경
       - Chrome 을 기본브라우저 사용 추천
 
-  - Node.js
-  - React setting
+## 2일차
+
+- Oracle 도커로 설치
+
+  - 설치되어있는 Oracle 삭제
+  -
+
+  - Database 설정
+    - H2 DB : Spring Boot에 내장된 Inmemory DB, Oracle, MySql, SQLServer와 쉽게 호환
+    - Oracle: 운영시 사용할 DB
+    - MySQL: Optional 설명할 DB
+    - Oracle PKNUSB / pknu_p@ss 로 생성
+      - 콘솔
+      ```shell
+      > sqlplus system/password
+      SQL>
+      ```
