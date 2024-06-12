@@ -92,7 +92,7 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
       - Apps > Spring-1 Run | Debug 중에서 하나 아이콘 클릭 서버 실행
       - 디버그로 실행해야 Hot code replace가 동작!!
 
-        <img src="https://raw.githubusercontent.com/zzzissu/basic-springboot-2024/main/images/sp001.png" width="350>
+        <img src="https://raw.githubusercontent.com/zzzissu/basic-springboot-2024/main/images/sp001.png" width="350">
 
     - 브라우저 변경설정
       - 설정(Ctrl + ,) > browser > Spring > Dashboard Open With 'Internal' -> 'external'로 변경
