@@ -161,14 +161,22 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - H2 DB : Spring Boot에 내장된 Inmemory DB, Oracle, MySql, SQLServer와 쉽게 호환
     - MySQL: Optional 설명할 DB
 
-  - Spring Boot + MyBatis
+  - Spring Boot + MyBatis 프로젝트
 
     - application name: spring02
     - Spring Boot 3.3.x 에는 MyBatis 없음
-    - Dependency중 DB(H2, Oracle, MTSQL)가 선택되어 있으면 웹서버 실행이 안됨
+    - Dependency
+
+      - Spring Boot DevTools
+      - Lombok
+      - Spring Web
+      - Thymeleaf
+      - Oracle Driver
+      - Mtbatis starter
 
     - build.gradle 확인
     - application.properties 추가작성
+    - Dependency중 DB(H2, Oracle, MTSQL)가 선택시 application.properties에 DB설정이 안되면 서버 실행 안됨
 
     ```properties
     spring.application.name=spring02
@@ -190,15 +198,29 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     ## Oracle 설정
     spring.datasource.username=pknusb
     spring.datasource.password=pknu_p@ss
-    spring.datasource.url=jdbc:oracle:thin@localhost:11521:FREE
+    spring.datasource.url=jdbc:oracle:thin:@localhost:11521:FREE
     spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 
     ## MyBatis 설정
     ## mapper 폴더 밑에 여러가지 폴더가 내재, 확장자는 .xml이지만 파일명은 뭐든지
     mybatis.mapper-locations=classpath:mapper/**/*.xml
-    mybatis.type-aliases-package=com.zzzissu.spring02.domain
+    mybatis.type-aliases-package=com.zzzissu.spring02.mapper
     ```
 
   - MyBatis 적용
-  - Spring, resource/WEB-INF 위치에 root-context.xml에 DB, Mybatis 설정
-  - SpringBoot, application.properties + config.java 로 변경
+
+    - Spring, resource/WEB-INF 위치에 root-context.xml에 DB, Mybatis 설정
+    - SpringBoot, application.properties + config.java 로 변경
+
+  - 개발시 순서 0. application.properties jdbc:oracle:thin:@localhost:11521:FREE, thin뒤에 :이 없었음
+    1. Database 테이블 생성
+    2. MyBatis 설정 -> /config/MyBatisConfig.java
+    3. 테이블과 일치하는 클래스 (domain, entity, dto, vo, etc...) 생성
+    - 테이블 컬럼 \_는 Java클래스는 사용안함
+    4. DB에 데이터를 주고받을 수 있는 클래스(dao, mapper, repository...) 생성
+    - 쿼리를 클래스내 작성가능, xml로 분리가능
+    5. (Model) 분리했을 경우 /resources/mapper/클래스.xml생성, 쿼리 입력
+    6. 서비스 인터페이스 /service/*Service.java, 서비스 구현 클래스 /service/*ServiceImpl.java 생성 작성
+    7. 사용자 접근하는 컨트롤러 @RestController 클래스 생성 -> @Controller 변경 가능
+    8. (Controller) 경우에 따라 @SpringBootApplication 클래스에 SqlSessionFactory 빈을 생성 메서드 작성
+    9. (View) /resource/templates/Thymeleaf html 생성, 작성

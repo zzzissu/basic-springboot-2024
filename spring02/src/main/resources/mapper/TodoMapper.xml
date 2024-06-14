@@ -5,7 +5,9 @@
 
 <mapper namespace="com.zzzissu.spring02.mapper.TodoMapper">
 
-    <select id="selectTodos" resultType="hashmap">
+    <select id="selectTodos" resultType="Todo">
+    <!-- id는 무슨 쿼리인지 알아볼 수 있도록 아무렇게나-> TodoMapper.java에서 받음,
+     resultType는 가져올 데이터 페이지에서 가져옴 -->
         SELECT TNO
             , TITLE
             , DUEDATE
@@ -14,6 +16,13 @@
         FROM TODOS
     </select>
 
-    <select>
+    <select id="selectTodo" resultType="Todo" parameterType="int">
+        SELECT TNO
+            , TITLE
+            , DUEDATE
+            , WRITER
+            , ISDONE
+        FROM TODOS
+        WHERE TNO = #{tno}
     </select>
 </mapper>
