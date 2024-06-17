@@ -1,0 +1,47 @@
+package com.zzzissu.backboard.entity;
+
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.List;
+
+// 게시판 보드 테이블 엔티티
+@Getter
+@Setter
+@Entity // 데이블화
+@Builder // 객체 생성을 간략화
+@NoArgsConstructor // 파라미터 없는 기본 생성자 자동생성
+@AllArgsConstructor // 멤버변수 모두를 파라미터로 가지는 생성자 자동생성
+public class Board {
+    
+    @Id // pk라는 의미
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)  // 나는 나중에 Oracle로 바꿀거야! 라는 뜻
+    private Long bno; // PK
+
+    @Column(name = "title", length = 250)
+    private String title; // 글제목
+
+    @Column(name = "content", length = 4000)
+    private String content; // 글내용
+
+    @CreatedDate
+    @Column(name = "createDate", updatable = false)  // 업데이트 안한다는 말
+    private LocalDateTime createDate; // 글생성일
+    
+    // 중요, Relationship 1:N 설정
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+    private List<Reply> replyList;  // Board.java와 Reply.java가 관계를 맺는 부분
+}
