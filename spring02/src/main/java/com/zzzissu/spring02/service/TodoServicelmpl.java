@@ -1,4 +1,4 @@
-package com.zzzissu.spring02.service;
+package main.java.com.zzzissu.spring02.service;
 
 import java.util.List;
 
