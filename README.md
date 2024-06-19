@@ -283,3 +283,84 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
   13. (설정)application.properties ddl-auto=create -> ddl-auto=update로 변경
   14. /test/.../repository/BoardRepositoryTests.java 생성, 테스트 메서드 작성
   15. 테스트 시작 > 웹 서버 실행 > h2-console 확인
+
+## 5일차
+
+- Tip
+
+  - Java Test 중 OpenJDK 64-Bit Server VM warning: Sharing is 빨간색 경고가 뜨면
+  - Ctrl + ,(설정) > Java Test Config 검색 > settings.json 편집
+
+  ```json
+  "java.test.config": {
+        "vmArgs": [
+            "-Xshare:off"
+        ]
+    }
+  ```
+
+  - 저장 후 실행
+
+- Spring Boot 프로젝트 오류처리
+
+  - 빌드를 해도 제대로 결과가 반영안되면
+  - Github Remote Repository 에 모두 커밋, 푸시 후
+  - Local Repository를 모두 삭제 후 새로 커밋
+  - 프로젝트 새로 로드, 초기화
+
+- Spring Boot JPA 프로젝트 개발 계속
+
+  1.  jUnit 테스트로 CRUD 확인
+  2.  /service/BoardService.java 생성 후 getList() 메서드 작성
+  3.  /controller/BoardController.java 생성 후 /board/list 실행할 수 있는 메서드 작성
+  4.  /templates/board/list.html 생성
+      - Thymeleaf 속성
+        - th:if="${board != null}"
+        - th:each="board : ${boardList}"
+        - th:text="${board.title}"
+  5.  /service/BoardSerivce.java에 getBoard() 메서드 추가
+  6.  /controller/BoardController.java에 /board/detail/{bno} 실행 메서드 작성
+  7.  /templates/board/detail.html 생성
+       <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp003.png" width="730">
+  8.  /templates/board/detail.html에 댓글영역 추가
+  9.  /service/ReplyService.java 생성, 댓글 저장 메서드 작성
+  10. /controller/ReplyController.java 생성, /reply/create/{bno} 포스트매핑 메서드 작성
+
+  11. Bootstrap 적용
+      - 다운로드 후 프로젝트에 위치
+      - CDN 링크를 추가
+      - https://www.getbootstrap.com 다운로드 후 압축 해제
+      - boostrap.min.css, bootstrap.min.js templates/static 에 위치
+  12. /templates/board/list.html, detail.html 부트스트랩 적용
+
+   <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp004.png" width="730">
+
+## 6일차
+
+- Spring Boot JPA 프로젝트 개발 계속
+  1. (설정) Thymeleaf 레이아웃 사용을 위한 디펜던시 추가
+  2. /templates/layout.html Thymeleaf로 레이아웃 템플릿 생성
+  3. list.html, detail.html 레이아웃 템플릿 적용
+  4. /templates/layout.html에 Bootstrap CDN 적용
+  5. /templates/board/list.html에 게시글 등록버튼 추가
+  6. /templates/board/create.html 게시글 작성 페이지 생성
+  7. /controller/BoardController.java create() GetMapping 메서드 작성
+  8. /service/BoardService.java setBoard() 작성
+  9. /controller/BoardController.java create() PostMapping 메서드 작성
+  10. (문제) 아무내용도 안적어도 저장됨
+  11. (설정) build.gradle 입력값 검증 Spring Boot Validation 디펜던시 추가
+  12. /validation/BoardForm.java 클래스 생성
+  13. /controller/BoardController.java에 BoardForm을 전달(Get, PostMapping 둘다)
+  14. create.html 입력항목 name, id를 th:field로 변경(ex, filed="*{title}")
+  15. 댓글등록에도 반영. ReplyForm, ReplyController, detail.html 작업(12~14 내용과 유사)
+  16. detail.html 경고영역 div는 create.html에서 복사해서 가져올 것
+  17. (문제) 각 입력창에 공백을 넣었을 때 입력되는 문제 @notEmpty는 스페이스를 허용 -> @NotBlank로 변경
+
+     <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp005.png" width="730">
+  18. /templates/layout.html에 네비게이션바(navbar) 추가
+  19. 테스트로 대량 데이터 추가
+
+
+## 7일차
+- Spring Boot JPA 프로젝트 개발 계속
+  1. 페이징
