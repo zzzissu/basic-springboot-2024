@@ -1,10 +1,12 @@
 package com.zzzissu.backboard.service;
 
+import com.zzzissu.backboard.common.NotFoundException;
 import com.zzzissu.backboard.entity.Member;
 import com.zzzissu.backboard.repository.MemberRepository;
 import com.zzzissu.backboard.security.MemberRole;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 // import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,6 +35,14 @@ public class MemberService {
         this.memberRepository.save(member);
 
         return member;
-
+    }
+    
+    // 사용자를 가져오는 메서드
+    public Member getMember(String username) {
+        Optional<Member> member = this.memberRepository.findByUsername(username);
+        if (member.isPresent())
+            return member.get();
+        else
+            throw new NotFoundException("Member not Found!");
     }
 }
