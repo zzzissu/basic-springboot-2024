@@ -1,7 +1,15 @@
 package com.zzzissu.backboard.entity;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+
+import com.zzzissu.backboard.security.MemberRole;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,4 +32,12 @@ public class Member {
     private String email;
 
     private String password;
+
+    @CreatedDate
+    @Column(name = "regDate", updatable = false)
+    private LocalDateTime regDate; // 회원가입일
+
+    @Enumerated(EnumType.STRING)    // Enum타입이 STRING "ROLE_ADMIN", "ROLE_USER" 때문
+    @Column(length = 12)
+    private MemberRole role;
 }
