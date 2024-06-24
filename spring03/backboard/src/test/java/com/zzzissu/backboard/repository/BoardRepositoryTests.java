@@ -1,27 +1,27 @@
 package com.zzzissu.backboard.repository;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.zzzissu.backboard.entity.Board;
-import com.zzzissu.backboard.service.BoardService;
+// import com.zzzissu.backboard.entity.Board;
+// import com.zzzissu.backboard.service.BoardService;
 
 // import static org.junit.jupiter.api.Assertions.assertEquals;
 // import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 // import java.util.List;
 // import java.util.Optional;
 
 @SpringBootTest
 public class BoardRepositoryTests {
     // JUnit 테스트
-    @Autowired
-    private BoardRepository boardRepository;
+    // @Autowired
+    // private BoardRepository boardRepository;
 
-    @Autowired
-    private BoardService boardService;
+    // @Autowired
+    // private BoardService boardService;
 
     // @Test
     // void testThreeHundredBoards() {

@@ -15,6 +15,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Getter
 @Setter
@@ -34,6 +35,10 @@ public class Reply {
     @CreatedDate
     @Column(name = "createDate", updatable = false)
     private LocalDateTime createDate; // 글생성일
+
+    @LastModifiedDate
+    @Column(name = "modifyDate")
+    private LocalDateTime modifyDate;   // 2024.06.24 수정일 추가
     
     // 중요, ERD로 DB를 설계하지 않고 엔티티클래스로 관계를 형성하려면 반드시 사용
     // RelationShip 다대일 설정.
