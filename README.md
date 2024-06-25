@@ -503,8 +503,27 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - /common CommonUtil.java 생성
     - /templates/board/detail.html 마크다운 뷰어 적용
 
+    <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp009.png" width="730">
+
+
+    <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp010.png" width="730">
+
+
   3. 카테고리 추가
-  
+    - /entity/Category.java 클래스 생성
+    - /repository/CategoryRerository.java 인터페이스 생성
+    - /service/CategoryService.java 생성
+    - /service/BoardService.java 조회조건에 카테고리 추가 수정
+    - 카테고리를 자유게시판, 질문응답게시판 분리
+    - /templates/layout.html navbar.html 추가기입
+    - /controller/BoardController.java GetMapping 메서드에 카테고리를 추가
+
+  4. 조회수 표시
+    - /entity/Board.java 조회수 필드 추가
+    - /service/BoardService.java 메서드 추가
+    - /controller/BoardController.java detail() 메서드 수정
+    - /templates/board/list.html 조회수 컬럼 추가
+
 
 
 
