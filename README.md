@@ -482,8 +482,29 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - /controller/BoardController.java list() 메서드 추가
     - /templates/board/list.html 검색창 추가, searchForm 폼영역 추가, **페이징영역 수정, Javascript 추가**
 
-  4. 마크다운 적용
-    - 마크다운 뷰, 마크다운 에디터
+
+## 10일차
+- Spring Boot JPA 프로젝트 개발 계속
+  1. 검색 기능 -> JPA Query
+    - @Query 어노테이션으로 직접 쿼리를 작성
+    - 단순 쿼리가 아니라서 JpaRepository가 자동으로 만들어 줄 수 없을 때 사용
+    - DB의 표준쿼리와 차이가 있음(Java Entity와 일치)
+    - /repositiry/BoardRepository.java, findAllByKeyword() 메서드 추가
+    - JPA Query @Query("")에 작성
+    - /service/BoardService.java getList() 수정
+
+  2. 마크다운 적용
+    - Wysiwyg 에디터 - CKEditor(https://ckeditor.com/), TinyMCE
+    - simplemde(https://simplemde.com/) 깃헙에 CDN 링크 복사 layout.html 링크 추가
+    - create.html textarea id content를 simplemde로 변환하는 js 추가
+    - detail.html textarea content simplemde js 추가
+
+    - (설정) build.gradle 마크다운 디펜던시 추가
+    - /common CommonUtil.java 생성
+    - /templates/board/detail.html 마크다운 뷰어 적용
+
+  3. 카테고리 추가
+  
 
 
 
