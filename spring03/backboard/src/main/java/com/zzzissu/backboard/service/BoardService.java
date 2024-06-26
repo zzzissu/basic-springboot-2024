@@ -25,6 +25,7 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import java.util.ArrayList;
 
@@ -128,6 +129,7 @@ public class BoardService {
 
     // 카테고리 추가된 메서드.
     public Specification<Board> searchBoard(String keyword, Integer cateId) {
+
         return new Specification<Board>() {
             private static final long serialVersionUID = 1L;    // 필요한 값이라서 추가
 
@@ -145,5 +147,23 @@ public class BoardService {
                 ));
             }
         };
+    }
+
+    // 조회수 증가 메서드
+    @Transactional      // 조회하면서 업데이트하므로!
+    public Board hitBoard(Long bno) {
+        // Optional 기능: null 체크
+        Optional<Board> oboard = this.boardRepository.findByBno(bno);
+
+        if(oboard.isPresent()) {
+            Board board = oboard.get();
+            // board.setHit(board.getHit() + 1);       // !!!!이대로 쓰면 예외발생
+            
+            board.setHit(Optional.ofNullable(board.getHit()).orElse(0) + 1);      //null인지 확인 / orElse() 값이 null이면 ()안의 값으로 바꿈
+
+            return board;
+        } else {
+            throw new NotFoundException("Board not found!");
+        }
     }
 }
