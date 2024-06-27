@@ -647,15 +647,53 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
         
         - 서버실행
 
+        <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp011.png" width="730">
 
-  - 에러페이지 작업(404, 500, etc)
-  - 비밀번호 찾기, 비밀번호 변경
 
+## 12일차
+- Spring Boot JPA 프로젝트 개발 계속
+  1. 에러페이지 작업(404, 500, etc)
+    - apllication.properties 에러페이지 관련 설정추가
+    - resource/static/img/bg_error.jpg 저장
+    - resource/templates/404.html, 500.html, error.html 페이지 생성
+    - /controller/CustomErrorController.java 생성
+
+  2. 비밀번호 변경
+    - build.gradle 메일을 보내기 위한 디펜던시 추가
+    - application.properties 메일설정(네이버) 입력
+    - 네이버 메일 SMTP 설정 > 환경설정 > POP3/IMAP 설정
+
+      <img src="https://raw.githubusercontent.com/zzzissu/Basic-SpringBoot-2024/master/images/sp012.png" width="730">
+
+    - /config/SecutiryConfig.java CSRF 설정 변경
+    - /service/MailService.java 생성
+    - /restcontroller/MailController.java 생성
+    - https://www.postman.com/ 다운로드
+
+
+## 13일차
+- Spring Boot JPA 프로젝트 개발 계속
+  1. 비밀번호 초기화(계속)
+    - 로그인 화면에서 비밀번호 초기화 버튼, AJAX로 RestAPI로 메일 보내기
+    - 메일에 링크 클릭
+    - http://localhost:8080/user/resetpassword(회원가입과 유사하게 개발)
+
+  2. 구글 로그인
+    - http://console.cloud.google.com/ 구글 클라우드 콘손
+    - 프로젝트 생성
+    - 
 
   - 리액트 적용
   - 리액트로 프론트엔드 설정
   - thymeleaf 리액트로 변경
   - Spring boot RestAPI 작업
+
+
+## 계속
+- Spring Boot JPA 프로젝트
+  1. 남은 것
+    - 8080 -> 80 서버
+    - 
   
   - AWS 라이트세일
   - 서버 접속 프로그램 설정
