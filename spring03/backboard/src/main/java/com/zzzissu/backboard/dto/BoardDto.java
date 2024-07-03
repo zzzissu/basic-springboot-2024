@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardDto {
+
+    private Long num;   // 게시글 번호 24.07.03 신규추가
     
     private Long bno; // PK
 

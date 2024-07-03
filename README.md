@@ -716,7 +716,7 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - https://nodejs.org/en, Download Node.js(LTS) 클릭
     - 설치 후 콘솔에서 node --version으로 확인, 현재 v20.15.0
   2. 리액트 패키지 설치
-    - npm unistall -g create-react-app
+    - npm uninstall -g create-react-app
     - npm install -g create-react-app
   3. 리액트 프로젝트를 초기화
     - VS Code에서 터미널 오픈
@@ -898,48 +898,27 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
 - Spring Boot React연동 프로젝트 개발 계속
   1. Spring Boot 서버가 실행되지 않았을 때
     - 프론트 서버부터 시작하면 Uncaught runtime error. 발생
-    - axios request가 예외발생 try - catch로 wtapping해줘야 함
+    - axios request가 예외발생 try - catch로 wrapping해줘야 함
 
   2. 페이징
-    - (Backend) /dto/Paging
-
-
-
+    - (Backend) /dto/PagingDto.java 생성
+    - (Backend) /dto/Header.java 생성
+    - RestboardController.java list() 수정 List<BoardDto> -> Header<List<BoardDro>>로 현 변환
+    - (Frontend) /BoardList.js 변수부분 수정
+    - (Frontend) /common/CommonFunc.js 생성 - 작성일 수정함수 formatDate() 작성
+    - /BoardList.js 날짜부분에 formatDate() 적용
+    - /BoardList.js 댓글 개수 표시
+    - (Backend) /dto/BoardDto.java 게시글 번호 변수 추가
+    - RestBoardController.java 게시글번호 계산로직 추가
+    - (Frontend) /BoardList.js bno를 num으로 변경
 
   1. 상세화면
+    - (Back) RestBoardController.java detail() 메서드 생성
+    - (Front) /BoardList.js 제목 수정
+    - /routes/BpardDetail.js 생성
 
-  2. 입력화면
+## 16일차
 
-  3. 페이징
-
-  4. 로그인
-
-
-
-
-
-
-
-  3. 구글 로그인
-    - http://console.cloud.google.com/ 구글 클라우드 콘손
-    - 프로젝트 생성
-    - OAuth 동의화면 설정
-    - 개발 계속...
-
-  - 리액트 적용
-  - 리액트로 프론트엔드 설정
-  - thymeleaf 리액트로 변경
-  - Spring boot RestAPI 작업
-
-
-## 계속
-- Spring Boot JPA 프로젝트
-  1. 남은 것
-    - 8080 -> 80 서버
-    - 
+  1. 로그인
   
-  - AWS 라이트세일
-  - 서버 접속 프로그램 설정
-  - 웹 서버 배포
-  - 8080 -> 80서버
-  - http -> https 변경
+  2. 
