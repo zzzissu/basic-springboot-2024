@@ -41,11 +41,11 @@ public class RestBoardController {
                         @RequestParam(value = "kw", defaultValue = "") String keyword) {
 
         Category cate = this.categoryService.getCategory(category);     // cate는 Category 객체, 변수사용 X
-        Page<Board> paging = this.boardService.getList(page, keyword, cate);   // 검색 및 카테고리 추가
-        // List<Board> list = paging.getContent();
+        Page<Board> pages = this.boardService.getList(page, keyword, cate);   // 검색 및 카테고리 추가
+        // List<Board> list = pages.getContent();
 
         List<BoardDto> result = new ArrayList<BoardDto>();
-        // paging.forEach(board -> result.add(BoardDto.builder().bno(board.getBno())
+        // pages.forEach(board -> result.add(BoardDto.builder().bno(board.getBno())
         //                                                         .title(board.getTitle())
         //                                                         .content(board.getContent())
         //                                                         .createDate(board.getCreateDate())
@@ -54,7 +54,7 @@ public class RestBoardController {
         //                                                         .hit(board.getHit())
         //                                                         .build()));
 
-        for (Board origin : paging) {
+        for (Board origin : pages) {
             List<ReplyDto> subList = new ArrayList<>();
 
             BoardDto bdDto = new BoardDto();
@@ -82,7 +82,7 @@ public class RestBoardController {
         }
 
         log.info(String.format(">>>>>> result에서 넘긴 게시글 수 %s", result.size()));
-        // model.addAttribute("paging", paging);
+        // model.addAttribute("pages", pages);
         // model.addAttribute("kw", keyword);
         // model.addAttribute("category", category);
 

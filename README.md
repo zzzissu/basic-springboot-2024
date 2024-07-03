@@ -896,6 +896,16 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
 
 ## 16일차
 - Spring Boot React연동 프로젝트 개발 계속
+  1. Spring Boot 서버가 실행되지 않았을 때
+    - 프론트 서버부터 시작하면 Uncaught runtime error. 발생
+    - axios request가 예외발생 try - catch로 wtapping해줘야 함
+
+  2. 페이징
+    - (Backend) /dto/Paging
+
+
+
+
   1. 상세화면
 
   2. 입력화면

@@ -13,9 +13,23 @@ function BoardList() {  // 객체를 만드는 함수
     // 제일 중요!!
     const getBoardList = async () => {
         var pageString = 'page=0';
-        const resp = (await axios.get("//localhost:8080/api/board/list/free?" + pageString)).data;
-        setBoardList(resp);
-        console.log(resp);
+
+        try {   // 백엔드 서버가 실행되지 않으면 예외발생 axios error
+            const resp = (await axios.get("//localhost:8080/api/board/list/free?" + pageString));
+
+            if(resp.status === 200) {
+                setBoardList(resp.data);     // boardList 변수에 담는 작업
+                console.log(resp.data);
+            } else if(resp.status === 404) {
+                alert("서버가 연결되지 않았습니다.");
+            } else if(resp.status === 500) {
+                alert("서버 오류입니다.");
+            }
+
+        } catch(error) {
+            console.log(">>>>>" + error);
+            alert("서버가 연결되지 않았습니다.");
+        }
     }
 
     useEffect(() => {
