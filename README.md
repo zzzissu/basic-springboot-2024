@@ -918,7 +918,40 @@ java 빅데이터 개발자 과정 Spring Boot 학습 리포지토리
     - /routes/BpardDetail.js 생성
 
 ## 16일차
+- Spring Boot React연동 프로젝트 개발 계속
+  0. npm -> node에서 만든 package manager
+    - yarn, brew(MacOS), chocolatey...
+    - node, npm, npx... 명령어 먼저 공부
 
   1. 로그인
+    - (Front) layout/Header.js 로그인, 회원가입 버튼으로 변경
+    - Login.js 화면 수정
+    - (Back) RestMemberController.java 생성 login() Post메서드 작성
+    - MemberService.java, getMemberByUsernameAndPassword() 메서드 작성
+    - PostMan에서 테스트
+    - (Front) Login.js axios 부분 작성
+    - Home.js, localStorage 사용해서 로그인 정보 출력
+
+  2. 상세화면 완료
+  - (Back) RestBoardController.java datail() 리턴값 변경
+  - (front) BoardDetail.js에서 axios로 가져오기
+
+
+## 남은 것
+- 추가 개발 필요
+  1. (Front)입력화면 
+
+  2. (Back) 구글 로그인
+    - https://console.cloud.google.com/ 구글 클라우드 콘솔
+    - 프로젝트 생성
+    - OAuth 동의화면 설정
+    - 개발 계속..
+
+  3. (Back) 포트변경
+    - 8080 -> 80 서버
+
+  4. (Back) Https 사용
+
+  5. (Back) 파일업로드
   
-  2. 
+  6. 로그인한 사용자 헤더에 표시

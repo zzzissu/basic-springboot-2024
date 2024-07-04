@@ -25,3 +25,12 @@ code {
   min-height: 400px;
   height: calc(100vh - 100px - 70px);
 }
+
+a{
+  text-decoration: none !important;
+  color:#000 !important;
+}
+
+a:hover{
+  text-decoration: underline !important;
+}
